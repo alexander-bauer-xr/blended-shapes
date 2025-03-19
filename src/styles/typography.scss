@@ -1,0 +1,101 @@
+/* typography.css */
+html,
+body {
+  font-family: 'Aspekta', Arial, sans-serif !important;
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  line-height: 1.2;
+  /* oder 1.1 – Geschmackssache */
+}
+
+/* Überschriften mit Variables */
+h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3 {
+  font-size: var(--font-size-body);
+  text-transform: uppercase;
+  font-weight:600;
+}
+
+/* Absatz, Lead-Text usw. */
+.lead {
+  font-size: var(--font-size-lead);
+  font-weight: 400;
+  max-width: 55ch;
+  line-height: 1.4;
+}
+
+.lead strong {
+  font-weight: 600;
+}
+
+.lead span, .story-lead span {
+  font-weight: 550;
+  color: var(--color-text);
+  text-decoration-color: var(--color-highlight) !important;
+  text-decoration: underline;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration-color: var(--color-highlight);
+}
+
+.content>a {
+  font-size: var(--font-size-body);
+  margin-top: var(--spacing-l);
+  margin-right: var(--spacing-l);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width:1420px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cases-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  background-image: var(--cases-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.content>a>.cases-icon {
+  width: var(--font-size-h3);
+  height: var(--font-size-h3);
+  margin-right: var(--spacing-xxs);
+}
+
+.content a span {
+  transition: transform var(--transition-default);
+}
+
+.content a:hover span {
+  transform: rotate(360deg);
+}
+
+.content .design span {
+  transform: rotate(90deg);
+}
+
+.content .THREEDexperiences span {
+  transform: rotate(180deg);
+}
+
+.content, .menu {
+  font-size: var(--font-size-body);
+}

@@ -1,0 +1,184 @@
+/* ------------------ MENU ------------------ */
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* statt padding: 1rem; */
+  padding: var(--spacing-xxs);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  /* statt transition: background-color 0.5s; */
+  transition: background-color var(--transition-default);
+}
+
+.menu h1 a {
+  text-decoration: none;
+}
+
+.menu nav {
+  width: 100%;
+}
+
+.menu ul {
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu svg {
+  /* Du kannst hier ebenfalls clamp() nutzen, wenn du willst: */
+  width: clamp(1.5rem, 4vw, 2.5rem);
+  height: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.menu-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.motto {
+  position: fixed;
+  left: 50vw;
+  transform: translateX(-50%);
+  font-weight: 600;
+}
+
+/* ------------------ HERO ------------------ */
+.hero-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  font-size: var(--font-size-hero);
+  font-weight: 400;
+  line-height: 0.8;
+  transform-origin: center top;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+.clip {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1420px;
+  padding: var(--spacing-l);
+  transform: translateX(20px);
+}
+
+.hero-container,
+.canvas-container {
+  opacity: 1 !important;
+}
+
+.transform-frame-left {
+  z-index: 5;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+.transform-frame-right {
+  z-index: 2;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+/* ------------------ CTA ------------------ */
+
+.CTA-wraper {
+  height: 100vh;
+  pointer-events: none;
+}
+
+.CTA-wraper h2 span {
+  max-width: 25ch;
+  display: inline-block;
+}
+
+.CTA {
+  position: fixed;
+  /* statt bottom: 2rem; right: 2rem; */
+  bottom: var(--spacing-m);
+  right: var(--spacing-m);
+  z-index: 10;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: opacity var(--transition-default), transform var(--transition-default), right var(--transition-default);
+  pointer-events: all;
+}
+
+.CTA button {
+  position: relative;
+  width: fit-content;
+  background: var(--color-button-bg);
+  border-radius: var(--radius-default);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  font-family: 'Aspekta', Arial, sans-serif !important;
+  font-size: var(--font-size-button);
+  color: var(--color-text);
+  text-decoration: none;
+  /* statt padding: 1rem 2rem; */
+  padding: var(--spacing-s) var(--spacing-m);
+  gap: 0.2rem;
+  text-wrap: nowrap;
+  border: none;
+  font-weight: 400;
+  cursor: pointer;
+  /* statt transition: background 0.5s; */
+  transition: background var(--transition-default);
+}
+
+.CTA button:hover {
+  background: var(--color-button-hover-bg);
+}
+
+.scrolled-CTA {
+  transform: translateY(0);
+  opacity: .95;
+}
+
+.CTA-spacer {
+  height: 40vh;
+  max-height: 0vh;
+}
+
+.sticky-CTA-container {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.clip-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: middle;
+  background-image: var(--clip-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}

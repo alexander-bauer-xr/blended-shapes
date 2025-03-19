@@ -1,0 +1,155 @@
+/* ========== SCROLLY + STICKY SETUP ========== */
+.experiences-scrolly {
+  position: relative;
+  width: 100%;
+  height: 300vh;
+}
+
+/* ------------------ EXPERIENCES ------------------ */
+.experiences {
+  display: flex;
+  flex-direction: column;
+  max-width: 1920px;
+  gap: var(--spacing-xs);
+}
+
+.experience {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-s);
+  overflow: hidden;
+}
+
+.experience-text {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--spacing-xxxs);
+}
+
+.experience-image {
+  flex: 1 1 50%;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.experience-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-default);
+  opacity: 1 !important;
+  transition: opacity 1.5s ease;
+}
+
+.experience-text p {
+  max-width: 65ch;
+  overflow: hidden;
+  transition: max-height var(--transition-default);
+}
+
+.experience a {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-xxs);
+  margin-right: var(--spacing-l);
+  transition: max-height var(--transition-default);
+}
+
+/* The sticky container stays pinned in the viewport */
+.sticky-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: visible;
+}
+
+/* ------------------ CASES ------------------ */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-height: 100vh;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  gap: var(--spacing-xs);
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(1);
+  z-index: 0;
+  border-radius: var(--radius-default);
+  cursor: crosshair;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.grid-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(0rem);
+  z-index: -1;
+  transition: filter var(--transition-default);
+
+  display: block;
+  /* fixes subpixel inline gaps */
+  backface-visibility: hidden;
+  /* prevents edge artifacts during scale */
+}
+
+.grid-item img:hover {
+  filter: blur(4rem);
+}
+
+.grid-item span {
+  font-size: var(--font-size-lead);
+  font-weight: 600;
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--transition-default);
+  mix-blend-mode: difference;
+}
+
+.grid-item:hover span {
+  opacity: .75;
+  pointer-events: none;
+}
+
+/* Assign transform origins */
+.top-left {
+  transform-origin: top left;
+}
+
+.top-right {
+  transform-origin: top right;
+}
+
+.bottom-left {
+  transform-origin: bottom left;
+}
+
+.bottom-right {
+  transform-origin: bottom right;
+}
