@@ -5,7 +5,7 @@ const endpoint = 'https://blended-shapes.com/cms-blended-shapes/web/api';
 
 const client = new GraphQLClient(endpoint, {
     headers: {
-        Authorization: 'Bearer 7h01XBa_Mq9xUdmJRDJgDgUf7GFpZqiG',
+        Authorization: 'Bearer ',
     },
 });
 
