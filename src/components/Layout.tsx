@@ -1,5 +1,5 @@
 // src/components/Layout.tsx
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import Header from './Header';
 
 type LayoutProps = {

@@ -24,7 +24,7 @@ const CasesPreview = () => {
             </div>
           ))}
         </div>
-        <a href="/cases" className="button Cases">
+        <a href="/dev/cases" className="button Cases">
           <span className="cases-icon"></span>Alle Cases ansehen
         </a>
       </div>

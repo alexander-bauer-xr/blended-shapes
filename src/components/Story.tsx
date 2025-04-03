@@ -9,7 +9,7 @@ const Story = () => {
               ... ein Team aus Kreativen, Entwicklern und Visionären, die gemeinsam an einem Strang ziehen.
             </p>
           </div>
-          <a href="/story" className="button About">
+          <a href="/dev/story" className="button About">
             <span className="cases-icon"></span>Lerne uns kennen
           </a>
         </div>

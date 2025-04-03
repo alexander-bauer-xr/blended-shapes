@@ -32,7 +32,6 @@ const Home = () => {
         if (sticky) {
           initVisualScrollEffects();
         } else {
-          console.warn('⏳ sticky-container not ready, retrying...');
           setTimeout(retryVisualInit, 100);
         }
       };

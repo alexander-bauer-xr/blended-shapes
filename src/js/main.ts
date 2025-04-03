@@ -40,7 +40,7 @@ export default function initThreeScene(): void {
   loadingManager.onProgress = (url, itemsLoaded, itemsTotal) => {
     const progress = (itemsLoaded / itemsTotal) * 100;
     loadingProgress.style.width = `${progress}%`;
-    console.log(`Loading ${url}: ${progress.toFixed(2)}% (${itemsLoaded}/${itemsTotal})`);
+    console.log(`Lade ${url}: ${progress.toFixed(2)}% (${itemsLoaded}/${itemsTotal})`);
   };
 
   loadingManager.onError = (url) => {
@@ -62,7 +62,7 @@ export default function initThreeScene(): void {
   scene.add(directionalLight);
 
   loadingManager.onLoad = () => {
-    console.log('All assets loaded');
+    console.log('Alles geladen!');
     setTimeout(() => {
       if (loadingBar.parentNode) {
         loadingBar.parentNode.removeChild(loadingBar);
@@ -80,7 +80,7 @@ export default function initThreeScene(): void {
   let mixer: THREE.AnimationMixer;
   let model: THREE.Object3D;
   const actions: Record<number, THREE.AnimationAction> = {};
-  let initialAnimationPlayed = false;
+  //let initialAnimationPlayed = false;
   let baseRotation = { x: 0, y: 0 };
   let interactiveRotation = { x: 0, y: 0 };
   const targetRotation = { x: 0, y: 0 };
@@ -109,7 +109,7 @@ export default function initThreeScene(): void {
         actions[0] = mixer.clipAction(gltf.animations[0]);
         actions[1] = mixer.clipAction(gltf.animations[1]);
 
-        actions[0].setLoop(THREE.LoopOnce);
+        actions[0].setLoop(THREE.LoopOnce, 1);
         actions[0].clampWhenFinished = true;
         currentAction = actions[0];
         currentAction.play();
@@ -121,7 +121,7 @@ export default function initThreeScene(): void {
 
             const nextAction = actions[1];
             nextAction.reset();
-            nextAction.setLoop(THREE.LoopRepeat);
+            nextAction.setLoop(THREE.LoopRepeat, Infinity);
             nextAction.fadeIn(0.5);
 
             currentAction!.crossFadeTo(nextAction, 0.5, false);
@@ -129,7 +129,7 @@ export default function initThreeScene(): void {
             currentAction = nextAction;
 
             setTimeout(() => {
-              initialAnimationPlayed = true;
+              //initialAnimationPlayed = true;
               controlsActivated = true;
             }, 1000);
           }

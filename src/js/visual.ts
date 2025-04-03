@@ -17,7 +17,7 @@ export default function initVisualScrollEffects(): void {
     let timeout: number;
     return function (...args: any[]) {
       clearTimeout(timeout);
-      timeout = window.setTimeout(() => fn.apply(this, args), delay);
+      timeout = window.setTimeout(() => fn(...args), delay);
     };
   }
 

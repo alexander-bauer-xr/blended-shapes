@@ -1,5 +1,4 @@
 // src/components/Services.tsx
-import { useEffect } from 'react';
 import { LandingPageEntry } from '../types/cms';
 
 interface ServicesProps {
