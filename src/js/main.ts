@@ -124,8 +124,9 @@ export default function initThreeScene(): void {
             nextAction.setLoop(THREE.LoopRepeat, Infinity);
             nextAction.fadeIn(0.5);
 
-            currentAction!.crossFadeTo(nextAction, 0.5, false);
+            currentAction!.crossFadeTo(nextAction, 0.5, true);
             nextAction.play();
+            
             currentAction = nextAction;
 
             setTimeout(() => {
