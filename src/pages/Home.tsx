@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import { useLayoutEffect, useState, useEffect, useMemo } from 'react';
-import { getLandingPage } from '../services/cmsClient'; // <--- neue Methode aus cmsClient
-import { LandingPage } from '../models/LandingPage'; // <--- neue Klasse
+import { getLandingPage } from '../services/cmsClient';
+import { LandingPage } from '../models/LandingPage';
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
 import CasesPreview from '../components/CasesPreview';
@@ -77,7 +77,7 @@ const Home = () => {
           </section>
         )}
 
-        <CasesPreview />
+        <CasesPreview gallery={landingData?.gallerie ?? []} />
         <Services services={landingData?.services ?? []} />
         <Story />
         <CTA />
