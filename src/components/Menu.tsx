@@ -11,7 +11,7 @@ const Menu = () => {
     <header className="menu">
       <div className="menu-wrapper">
         <div>
-          <h1><a href="/dev/" className="hover:underline">
+          <h1><a href="/" className="hover:underline">
           blended shapes</a></h1>
         </div>
         <div className="motto">
@@ -43,12 +43,12 @@ const Menu = () => {
         <nav>
           <ul>
             <li>
-              <a href="/dev/cases" className="hover:underline">
+              <a href="/cases" className="hover:underline">
                 cases
               </a>
             </li>
             <li>
-              <a href="/dev/story" className="hover:underline">
+              <a href="/story" className="hover:underline">
                 story
               </a>
             </li>
