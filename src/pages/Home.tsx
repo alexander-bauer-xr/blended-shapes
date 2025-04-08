@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import { useLayoutEffect, useState, useEffect, useMemo } from 'react';
-import { getLandingPageContent } from '../services/cmsClient';
-import { LandingPageEntry } from '../types/cms';
+import { getLandingPage } from '../services/cmsClient'; // <--- neue Methode aus cmsClient
+import { LandingPage } from '../models/LandingPage'; // <--- neue Klasse
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
 import CasesPreview from '../components/CasesPreview';
@@ -13,7 +13,6 @@ import initThreeScene, { destroyThreeScene } from '../js/main';
 import initGridEffects from '../js/grid';
 import './Home.scss';
 
-// Hilfsfunktion zum Entfernen äußerer <p>-Tags
 const cleanHTML = (html: string): string => {
   const trimmedHTML = html.trim();
   if (trimmedHTML.startsWith('<p>') && trimmedHTML.endsWith('</p>')) {
@@ -23,7 +22,7 @@ const cleanHTML = (html: string): string => {
 };
 
 const Home = () => {
-  const [landingData, setLandingData] = useState<LandingPageEntry | null>(null);
+  const [landingData, setLandingData] = useState<LandingPage | null>(null);
 
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -35,7 +34,7 @@ const Home = () => {
           setTimeout(retryVisualInit, 100);
         }
       };
-    
+
       retryVisualInit();
       initThreeScene();
       initGridEffects();
@@ -47,7 +46,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    getLandingPageContent().then((data) => {
+    getLandingPage().then((data) => {
       setLandingData(data?.[0] || null);
     });
   }, []);
@@ -79,7 +78,7 @@ const Home = () => {
         )}
 
         <CasesPreview />
-        <Services services={landingData?.services} />
+        <Services services={landingData?.services ?? []} />
         <Story />
         <CTA />
       </main>
