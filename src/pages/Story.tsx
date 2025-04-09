@@ -2,6 +2,10 @@
 import { useLayoutEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import initVisualScrollEffects from '../js/menuBackground';
+import StoryLiner from '../components/StoryLiner';
+import StoryLongLiner from '../components/StoryLongLiner';
+import People from '../components/People';
+
 
 const Story = () => {
 
@@ -16,36 +20,25 @@ const Story = () => {
             <Helmet>
                 <title>Story | Blended Shapes | Creative Coding, Design & Art Direction, 3D-Visualisierungen</title>
                 <meta name="description" content="Erfahre wer Blended Shapes gegründet hat." />
-                <meta property="og:title" content="Story | Blended Shapes | Creative Coding, Design & Art Direction, 3D-Visualisierungen" />
+                <meta property="og:title" content="Story | Blended Shapes | Creative Coding, Design und Art Direction, 3D-Visualisierungen" />
                 <meta property="og:description" content="Erfahre wer Blended Shapes gegründet hat." />
             </Helmet>
 
             <main className="container-xl sub">
                 <section className="cases-section">
                     <div className="content">
+                        <h2>Story</h2>
                         <div className="lead-wrapper">
-                            <h2>Story</h2>
-                            <h3>blended shapes</h3>
-                            <p className="story-lead">Form und Funktion lässt sich für uns nicht trennen. Diese beiden Dinge
-                                müssen von einem eingängigen Konzept getragen werden, um eine klare
-                                und unverwechselbare visuelle Sprache zu schaffen. Formen bringen
-                                uns zusammen. Mit <span>Creative Coding</span>, <span>3D-Visualisierung</span>, <span>Art Direction</span>
-                                 und
-                                 <span>Design</span> setzen wir Ihre Marke kreativ in Szene – für mehr Sichtbarkeit
-                                und Wirkung.
-                            </p>
+                            <StoryLongLiner />
                         </div>
                     </div>
                 </section>
 
                 <section>
                     <div className="content">
-                        <div className="lead-wrapper">
-                            <h2>Wir sind ...</h2>
-                            <p className="lead">
-                                ... ein Team aus Kreativen, Entwicklern und Visionären, die gemeinsam an einem Strang ziehen.
-                            </p>
-                        </div>
+                        <StoryLiner />
+                    
+                        <People />
                     </div>
                 </section>
             </main>

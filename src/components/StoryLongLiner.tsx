@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { StoryEntry } from '../models/StoryEntry';
 import { getStories } from '../services/cmsClient';
-import Storyliner from '../components/StoryLiner';
 
 const Story = () => {
   const [stories, setStories] = useState<StoryEntry[]>([]);
@@ -16,14 +15,15 @@ const Story = () => {
   }
 
   return (
-    <section>
-      <div className="content">
-        <Storyliner />
-        <a href="/story" className="button About">
-          <span className="cases-icon"></span>Lerne mich kennen
-        </a>
-      </div>
-    </section>
+    <>
+      {stories.map((entry: StoryEntry, index: number) => (
+        <div
+          key={index}
+          className="lead-wrapper"
+          dangerouslySetInnerHTML={{ __html: entry.longDesc }}
+        ></div>
+      ))}
+    </>
   );
 };
 
