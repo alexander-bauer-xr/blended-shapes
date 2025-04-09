@@ -204,12 +204,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(calc(50% - 2rem), 1fr));
   gap: 2rem;
-
 }
 
 .person-card {
-  padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-default);
 }
 
 .person-image {
@@ -217,3 +215,4 @@
   height: auto;
   border-radius: 4px;
 }
+

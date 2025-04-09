@@ -34,6 +34,10 @@
     margin-left: unset;
     grid-template-rows: unset;
   }
+
+  .people-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
 }
 
 /* Large devices (small laptops, desktops) */

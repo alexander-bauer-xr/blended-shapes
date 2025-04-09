@@ -59,7 +59,6 @@
   transition: max-height var(--transition-default);
 }
 
-/* The sticky container stays pinned in the viewport */
 .sticky-container {
   position: -webkit-sticky;
   position: sticky;
@@ -114,9 +113,7 @@
   transition: filter var(--transition-default);
 
   display: block;
-  /* fixes subpixel inline gaps */
   backface-visibility: hidden;
-  /* prevents edge artifacts during scale */
 }
 
 .grid-item img:hover {
@@ -137,7 +134,6 @@
   pointer-events: none;
 }
 
-/* Assign transform origins */
 .top-left {
   transform-origin: top left;
 }
