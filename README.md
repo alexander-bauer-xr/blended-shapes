@@ -1,7 +1,7 @@
 # Blended Shapes – React + Vite Frontend
 
 Dieses Projekt ist ein modernes React-Frontend, das Inhalte aus einem **CraftCMS-Backend** über die **GraphQL API** bezieht.  
-Es dient als Grundlage für interaktive Web-Erlebnisse mit einem klaren Fokus auf Performance, Struktur und Design.
+Es dient als Grundlage für eine Portfolioseite, mit einem klaren Fokus auf Performance, Struktur und Design.
 
 ---
 
@@ -148,6 +148,13 @@ react-page/
 ```
 
 ---
+
+## ToDos
+
+- [ ] PHP-Proxy-Logik vervollständigen oder verbessern (backend/proxy.php)
+- [ ] Kontaktformular implementieren
+- [ ] Bessere Frontend-Animationen und sanfte Übergänge
+- [ ] Optimierung des responsiven Designs und typografischen Feinschliffs
 
 ## Weiterführend
 
