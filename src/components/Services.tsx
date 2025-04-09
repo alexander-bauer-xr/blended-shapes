@@ -27,7 +27,7 @@ const Services = ({ services }: ServicesProps) => {
             {services.map((service) => (
               <div key={service.id} className="experience" data-fullheight="300" data-minheight="100">
                 <div className="experience-text">
-                  <h3>{service.slug.replace('-', ' & ')}</h3>
+                  <h3>{service.title}</h3>
                   <p dangerouslySetInnerHTML={{ __html: removeOuterParagraph(service.beschreibungLang) }} />
                 </div>
               </div>
