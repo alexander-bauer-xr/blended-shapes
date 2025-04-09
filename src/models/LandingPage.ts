@@ -1,4 +1,4 @@
-import { LandingPageEntry } from '../types/cms';
+import { LandingPageRaw } from '../types/cms';
 
 export class LandingPage {
   constructor(
@@ -24,21 +24,21 @@ export class LandingPage {
     }[]
   ) {}
 
-  static fromRaw(entry: LandingPageEntry): LandingPage {
+  static fromRaw(raw: LandingPageRaw): LandingPage {
     return new LandingPage(
-      entry.id,
-      entry.leadtext,
-      entry.motto2,
-      entry.story,
-      entry.hero3dmodel?.id ?? '',
-      entry.services?.map((service) => ({
+      raw.id,
+      raw.leadtext,
+      raw.motto2,
+      raw.story,
+      raw.hero3dmodel?.id ?? '',
+      raw.services?.map((service) => ({
         id: service.id,
         title: service.title,
         beschreibungKurz: service.beschreibungKurz,
         beschreibungLang: service.beschreibungLang,
         slug: service.slug,
       })) ?? [],
-      entry.casepreview?.map((preview) => ({
+      raw.casepreview?.map((preview) => ({
         id: preview.id,
         beschreibung: preview.beschreibung ?? '',
         gallerie: preview.gallerie?.map((g) => ({

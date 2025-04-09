@@ -1,8 +1,8 @@
 // src/components/Services.tsx
-import { LandingPageEntry } from '../types/cms';
+import { LandingPage } from '../models/LandingPage';
 
 interface ServicesProps {
-  services?: LandingPageEntry['services'];
+  services?: LandingPage['services'];
 }
 
 const removeOuterParagraph = (html: string): string => {
