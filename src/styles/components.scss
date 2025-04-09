@@ -4,14 +4,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* statt padding: 1rem; */
   padding: var(--spacing-xxs);
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
-  /* statt transition: background-color 0.5s; */
   transition: background-color var(--transition-default);
 }
 
@@ -35,10 +33,15 @@
   cursor: pointer;
 }
 
-.menu svg {
-  /* Du kannst hier ebenfalls clamp() nutzen, wenn du willst: */
+.menu-icon {
+  display: inline-block;
   width: clamp(1.5rem, 4vw, 2.5rem);
   height: clamp(1.5rem, 4vw, 2.5rem);
+  vertical-align: middle;
+  background-image: var(--menu-icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 .menu-wrapper {
@@ -146,7 +149,6 @@
   border: none;
   font-weight: 400;
   cursor: pointer;
-  /* statt transition: background 0.5s; */
   transition: background var(--transition-default);
 }
 
@@ -181,4 +183,37 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+}
+
+/* Cases Carousel */
+
+.transition-box {
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  max-height: 6000px; 
+  opacity: 1;
+}
+
+.transition-box.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* People  */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(50% - 2rem), 1fr));
+  gap: 2rem;
+
+}
+
+.person-card {
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.person-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }

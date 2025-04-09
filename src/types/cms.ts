@@ -24,7 +24,6 @@ export interface LandingPageRaw {
     }[];
 }
 
-// types/cms.ts
 export interface CaseRaw {
     id: string;
     title: string;

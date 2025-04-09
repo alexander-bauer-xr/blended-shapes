@@ -43,6 +43,11 @@ section {
 
 .index {
   margin: 97vh auto 2rem;
+  background: var(--color-background);
+}
+
+.footer {
+  margin: 0 auto 2rem;
 }
 
 .sub {
@@ -76,7 +81,6 @@ section {
 .sub .gallery-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* immer 2 Spalten */
   gap: var(--spacing-xs);
   margin: 0 auto;
 }
@@ -102,7 +106,6 @@ section {
 @media (max-width: 768px) {
   .sub .gallery-wrapper {
     grid-template-columns: 1fr;
-    /* 1 Spalte auf kleinen Screens */
   }
 
   .sub .gallery-item.span-2 {
@@ -132,7 +135,7 @@ section {
   font-weight: 400;
   cursor: pointer;
   transition: background var(--transition-default);
-  border: 3px solid var(--color-text);
+  border: 0.15rem solid var(--color-text);
 }
 
 .sub .tags {
@@ -162,7 +165,6 @@ section {
   width: 100%;
 }
 
-/* Fixed Three.js Canvas Container */
 #canvas-container {
   position: fixed;
   top: 0;

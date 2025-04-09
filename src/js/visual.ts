@@ -252,7 +252,6 @@ export default function initVisualScrollEffects(): void {
     document.documentElement.style.setProperty('--scrollbar-width', `${scrollbarWidth}px`);
   }
 
-  // === INIT now directly invoked (React compatible)
   setupExperiences();
   updateScrollbarWidth();
   handleScrollFrame();
