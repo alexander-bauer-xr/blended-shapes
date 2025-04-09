@@ -55,10 +55,20 @@ export const getCases = async (): Promise<CaseEntry[]> => {
           title
           beschreibungKurz
           beschreibungLang
-          gallerie {
-            url
+          tags {
             title
-            filename
+          }
+          casespreviews {
+            id
+            ... on media_Entry {
+              id
+              beschreibung
+              cssStyle
+              gallerie {
+                id
+                url
+              }
+            }
           }
         }
       }
