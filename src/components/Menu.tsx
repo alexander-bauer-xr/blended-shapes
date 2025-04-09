@@ -12,30 +12,17 @@ const Menu = () => {
       <div className="menu-wrapper">
         <div>
           <h1><a href="/" className="hover:underline">
-          blended shapes</a></h1>
+            blended shapes</a></h1>
         </div>
         <div className="motto">
-          we code, we design, we give art direction
+          [code, design, vision].forEach(apply)
         </div>
         <button
           aria-label="Menu"
           className="menu-button md:hidden"
           onClick={toggleMenu}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="icon w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
+          <span className="menu-icon"></span>
         </button>
       </div>
 
