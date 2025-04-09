@@ -23,4 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+#Token
+.env
 /src/api/client.ts
+/backend/proxy.php

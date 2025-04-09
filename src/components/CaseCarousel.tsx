@@ -19,13 +19,11 @@ const CaseCarousel = () => {
   }, []);
 
   const next = () => {
-    // start collapse
     setCollapsed(true);
     setTimeout(() => {
-      // switch content after collapse
       setIndex((prev) => (prev + 1) % cases.length);
       setCollapsed(false);
-    }, 400); // must match CSS transition duration
+    }, 400);
   };
 
   const handlers = useSwipeable({
