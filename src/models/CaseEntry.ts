@@ -1,12 +1,22 @@
+// models/CaseEntry.ts
 import { CaseRaw } from '../types/cms';
 
 export class CaseEntry {
   constructor(
     public id: string,
     public title: string,
-    public shortDesc: string,
-    public longDesc: string,
-    public gallery: { url: string; title: string; filename: string }[]
+    public beschreibungKurz: string,
+    public beschreibungLang: string,
+    public tags: string[],
+    public casespreviews: {
+      id: string;
+      beschreibung: string;
+      cssStyle: string;
+      gallerie: {
+        id: string;
+        url: string;
+      }[];
+    }[]
   ) {}
 
   static fromRaw(raw: CaseRaw): CaseEntry {
@@ -15,7 +25,16 @@ export class CaseEntry {
       raw.title,
       raw.beschreibungKurz,
       raw.beschreibungLang,
-      raw.gallerie
+      raw.tags?.map((tag) => tag.title) ?? [],
+      raw.casespreviews.map((preview) => ({
+        id: preview.id,
+        beschreibung: preview.beschreibung,
+        cssStyle: preview.cssStyle,
+        gallerie: preview.gallerie.map((img) => ({
+          id: img.id,
+          url: img.url,
+        })),
+      }))
     );
   }
 }
