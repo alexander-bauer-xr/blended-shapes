@@ -1,36 +1,42 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import initGridEffects from '../js/grid';
 
 type Props = {
-  gallery: {
+  casepreview: {
     id: string;
-    path: string;
-    filename: string;
-    url: string | null;
+    beschreibung: string;
+    gallerie: {
+      id: string;
+      url: string | null;
+    }[];
   }[];
 };
 
 const positionClasses = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
-const caseTitles = [
-  'ein-anderes-duisburg.de',
-  'therapie-fokus.at',
-  'grauzone-pott.de',
-  'Sand im Getriebe',
-];
 
-const CasesPreview: FC<Props> = ({ gallery }) => {
+const CasesPreview: FC<Props> = ({ casepreview }) => {
+
+  useEffect(() => {
+    if (casepreview.length > 0) {
+      setTimeout(() => {
+        initGridEffects();
+      }, 50);
+    }
+  }, [casepreview]);
+
   return (
     <section className="cases-section">
       <div className="content">
         <h2>Cases</h2>
         <div className="grid">
-          {gallery.slice(0, 4).map((item, index) => (
+          {casepreview.slice(0, 4).map((item, index) => (
             <div className={`grid-item ${positionClasses[index]}`} key={item.id}>
-              {item.url ? (
-                <img src={item.url} alt={caseTitles[index]} />
+              {item.gallerie[0]?.url ? (
+                <img src={item.gallerie[0].url} alt={item.beschreibung} />
               ) : (
                 <div className="img-placeholder">No Image</div>
               )}
-              <span>{caseTitles[index]}</span>
+              <span>{item.beschreibung}</span>
             </div>
           ))}
         </div>

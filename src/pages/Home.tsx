@@ -1,4 +1,5 @@
 // src/pages/Home.tsx
+
 import { useLayoutEffect, useState, useEffect, useMemo } from 'react';
 import { getLandingPage } from '../services/cmsClient';
 import { LandingPage } from '../models/LandingPage';
@@ -77,7 +78,7 @@ const Home = () => {
           </section>
         )}
 
-        <CasesPreview gallery={landingData?.gallerie ?? []} />
+        <CasesPreview casepreview={landingData?.casepreview ?? []} />
         <Services services={landingData?.services ?? []} />
         <Story />
         <CTA />

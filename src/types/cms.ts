@@ -6,7 +6,7 @@ export interface LandingPageEntry {
     story: string;
     hero3dmodel: {
         id: string;
-    };
+    } | null;
     services: {
         id: string;
         title: string;
@@ -14,13 +14,16 @@ export interface LandingPageEntry {
         beschreibungLang: string;
         slug: string;
     }[];
-    gallerie?: {
+    casepreview?: {
         id: string;
-        path: string;
-        filename: string;
-        url: string | null;
+        beschreibung: string;
+        gallerie: {
+            id: string;
+            url: string | null;
+        }[];
     }[];
 }
+
 export interface CaseRaw {
     id: string;
     title: string;

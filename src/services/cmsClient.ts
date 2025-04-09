@@ -1,3 +1,5 @@
+// src/services/cmsClient.ts
+
 import { gql } from 'graphql-request';
 import { client } from '../api/client';
 import { LandingPage } from '../models/LandingPage';
@@ -15,29 +17,30 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
             id
           }
           leadtext
-          motto2
-          story
-          services {
-            ... on services_Entry {
-              id
-              title
-              beschreibungKurz
-              beschreibungLang
-              slug
+            motto2
+            story
+            services {
+              ... on services_Entry {
+                id
+                title
+                beschreibungKurz
+                beschreibungLang
+                slug
+              }
             }
-          }
-          motto2
-          gallerie {
-            ... on bilder_Asset {
-              id
-              path
-              filename
-              url
+            casepreview {
+              ... on media_Entry {
+                id
+                beschreibung
+                gallerie {
+                  id
+                  url
+                }
+              }
             }
           }
         }
       }
-    }
   `;
   const data = await client.request<{ entries: LandingPageEntry[] }>(query);
   return data.entries.map(LandingPage.fromRaw);

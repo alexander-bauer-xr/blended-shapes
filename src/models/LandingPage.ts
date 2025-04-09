@@ -1,4 +1,3 @@
-// models/LandingPage.ts
 import { LandingPageEntry } from '../types/cms';
 
 export class LandingPage {
@@ -15,11 +14,13 @@ export class LandingPage {
       beschreibungLang: string;
       slug: string;
     }[],
-    public gallerie: {
+    public casepreview: {
       id: string;
-      path: string;
-      filename: string;
-      url: string | null;
+      beschreibung: string;
+      gallerie: {
+        id: string;
+        url: string | null;
+      }[];
     }[]
   ) {}
 
@@ -30,18 +31,20 @@ export class LandingPage {
       entry.motto2,
       entry.story,
       entry.hero3dmodel?.id ?? '',
-      entry.services.map((service: LandingPageEntry['services'][number]) => ({
+      entry.services?.map((service) => ({
         id: service.id,
         title: service.title,
         beschreibungKurz: service.beschreibungKurz,
         beschreibungLang: service.beschreibungLang,
         slug: service.slug,
-      })),
-      entry.gallerie?.map(g => ({
-        id: g.id,
-        path: g.path,
-        filename: g.filename,
-        url: g.url ?? null,
+      })) ?? [],
+      entry.casepreview?.map((preview) => ({
+        id: preview.id,
+        beschreibung: preview.beschreibung ?? '',
+        gallerie: preview.gallerie?.map((g) => ({
+          id: g.id,
+          url: g.url ?? null,
+        })) ?? [],
       })) ?? []
     );
   }
