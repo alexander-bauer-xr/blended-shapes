@@ -60,7 +60,7 @@ const Home = () => {
     <>
       <Helmet>
         <title>Home | Blended Shapes</title>
-        <meta name="description" content="Creative Coding, Design & 3D-Visualisierungen" />
+        <meta name="description" content="Creative Coding, Design und 3D-Visualisierungen" />
         <meta property="og:title" content="Home | Blended Shapes" />
         <meta property="og:description" content="Blended Shapes – wir bringen Form und Funktion zusammen." />
       </Helmet>
@@ -81,8 +81,10 @@ const Home = () => {
         <CasesPreview casepreview={landingData?.casepreview ?? []} />
         <Services services={landingData?.services ?? []} />
         <Story />
-        <CTA />
       </main>
+      <footer className="container-xl footer">
+        <CTA />
+      </footer>
     </>
   );
 };
