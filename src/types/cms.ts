@@ -24,12 +24,24 @@ export interface LandingPageRaw {
     }[];
 }
 
+// types/cms.ts
 export interface CaseRaw {
     id: string;
     title: string;
     beschreibungKurz: string;
     beschreibungLang: string;
-    gallerie: { url: string; title: string; filename: string }[];
+    tags: {
+        title: string;
+    }[];
+    casespreviews: {
+        id: string;
+        beschreibung: string;
+        cssStyle: string;
+        gallerie: {
+            id: string;
+            url: string;
+        }[];
+    }[];
 }
 
 export interface StoryRaw {
@@ -38,13 +50,13 @@ export interface StoryRaw {
     beschreibungKurz: string;
     beschreibungLang: string;
     personen: {
-      id: string;
-      personenname: string;
-      bio: string;
-      profilbild: {
         id: string;
-        filename: string;
-        url: string;
-      }[];
+        personenname: string;
+        bio: string;
+        profilbild: {
+            id: string;
+            filename: string;
+            url: string;
+        }[];
     }[];
-  }  
+}  
