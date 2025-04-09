@@ -1,20 +1,35 @@
 // src/components/Story.tsx
-const Story = () => {
-    return (
-        <section>
-        <div className="content">
-          <div className="lead-wrapper">
-            <h2>Wir sind ...</h2>
-            <p className="lead">
-              ... ein Team aus Kreativen, Entwicklern und Visionären, die gemeinsam an einem Strang ziehen.
-            </p>
-          </div>
-          <a href="/dev/story" className="button About">
-            <span className="cases-icon"></span>Lerne uns kennen
-          </a>
-        </div>
-      </section>
-    );
-  };
+import { useEffect, useState } from 'react';
+import { StoryEntry } from '../models/StoryEntry';
+import { getStories } from '../services/cmsClient';
 
-  export default Story;
+const Story = () => {
+  const [stories, setStories] = useState<StoryEntry[]>([]);
+
+  useEffect(() => {
+    getStories().then(setStories);
+  }, []);
+
+  if (!stories || stories.length === 0) {
+    return null;
+  }
+
+  return (
+    <section>
+      <div className="content">
+        {stories.map((entry, index) => (
+          <div
+            key={index}
+            className="lead-wrapper"
+            dangerouslySetInnerHTML={{ __html: entry.shortDesc }}
+          ></div>
+        ))}
+        <a href="/story" className="button About">
+          <span className="cases-icon"></span>Lerne uns kennen
+        </a>
+      </div>
+    </section>
+  );
+};
+
+export default Story;

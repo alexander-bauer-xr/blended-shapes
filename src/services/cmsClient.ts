@@ -5,7 +5,7 @@ import { client } from '../api/client';
 import { LandingPage } from '../models/LandingPage';
 import { CaseEntry } from '../models/CaseEntry';
 import { StoryEntry } from '../models/StoryEntry';
-import { CaseRaw, StoryRaw, LandingPageEntry } from '../types/cms';
+import { CaseRaw, StoryRaw, LandingPageRaw } from '../types/cms';
 
 export const getLandingPage = async (): Promise<LandingPage[]> => {
   const query = gql`
@@ -42,7 +42,7 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
         }
       }
   `;
-  const data = await client.request<{ entries: LandingPageEntry[] }>(query);
+  const data = await client.request<{ entries: LandingPageRaw[] }>(query);
   return data.entries.map(LandingPage.fromRaw);
 };
 
@@ -85,7 +85,7 @@ export const getStories = async (): Promise<StoryEntry[]> => {
               profilbild {
                 id
                 filename
-                srcset(sizes: "1024")
+                url
               }
             }
           }

@@ -10,10 +10,10 @@ export class StoryEntry {
       id: string;
       personenname: string;
       bio: string;
-      profilbild: {
+      profilbild?: {
         id: string;
         filename: string;
-        srcset: string;
+        url: string;
       };
     }[]
   ) {}
@@ -24,7 +24,12 @@ export class StoryEntry {
       raw.title,
       raw.beschreibungKurz,
       raw.beschreibungLang,
-      raw.personen
+      raw.personen.map(p => ({
+        id: p.id,
+        personenname: p.personenname,
+        bio: p.bio,
+        profilbild: p.profilbild?.[0] // <-- nur das erste Bild extrahieren
+      }))
     );
-  }
+  }  
 }

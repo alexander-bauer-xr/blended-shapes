@@ -1,5 +1,5 @@
 // types/cms.ts
-export interface LandingPageEntry {
+export interface LandingPageRaw {
     id: string;
     leadtext: string;
     motto2: string;
@@ -38,13 +38,13 @@ export interface StoryRaw {
     beschreibungKurz: string;
     beschreibungLang: string;
     personen: {
+      id: string;
+      personenname: string;
+      bio: string;
+      profilbild: {
         id: string;
-        personenname: string;
-        bio: string;
-        profilbild: {
-            id: string;
-            filename: string;
-            srcset: string;
-        };
+        filename: string;
+        url: string;
+      }[];
     }[];
-}
+  }  
