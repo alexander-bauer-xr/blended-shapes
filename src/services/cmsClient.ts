@@ -1,3 +1,5 @@
+// src/services/cmsClient.ts
+
 import { gql } from 'graphql-request';
 import { client } from '../api/client';
 import { LandingPage } from '../models/LandingPage';
@@ -11,10 +13,12 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
       entries(section: "landingPage") {
         ... on landingpagecontent_Entry {
           id
+          hero3dmodel {
+            id
+          }
           leadtext
           motto2
           story
-          hero3dmodel { id }
           services {
             ... on services_Entry {
               id
@@ -22,7 +26,17 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
               beschreibungKurz
               beschreibungLang
               slug
-              gallerie { id }
+              gallerie {
+                id
+              }
+            }
+          }
+          gallerie {
+            ... on bilder_Asset {
+              id
+              path
+              filename
+              url
             }
           }
         }

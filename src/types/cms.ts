@@ -16,6 +16,12 @@ export interface LandingPageEntry {
             id: string;
         }[];
     }[];
+    gallerie?: {
+        id: string;
+        path: string;
+        filename: string;
+        url: string | null;
+    }[];
 }
 export interface CaseRaw {
     id: string;
@@ -23,21 +29,21 @@ export interface CaseRaw {
     beschreibungKurz: string;
     beschreibungLang: string;
     gallerie: { url: string; title: string; filename: string }[];
-  }
-  
-  export interface StoryRaw {
+}
+
+export interface StoryRaw {
     id: string;
     title: string;
     beschreibungKurz: string;
     beschreibungLang: string;
     personen: {
-      id: string;
-      personenname: string;
-      bio: string;
-      profilbild: {
         id: string;
-        filename: string;
-        srcset: string;
-      };
+        personenname: string;
+        bio: string;
+        profilbild: {
+            id: string;
+            filename: string;
+            srcset: string;
+        };
     }[];
-  }
+}
