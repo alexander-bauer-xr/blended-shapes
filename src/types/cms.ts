@@ -17,3 +17,27 @@ export interface LandingPageEntry {
         }[];
     }[];
 }
+export interface CaseRaw {
+    id: string;
+    title: string;
+    beschreibungKurz: string;
+    beschreibungLang: string;
+    gallerie: { url: string; title: string; filename: string }[];
+  }
+  
+  export interface StoryRaw {
+    id: string;
+    title: string;
+    beschreibungKurz: string;
+    beschreibungLang: string;
+    personen: {
+      id: string;
+      personenname: string;
+      bio: string;
+      profilbild: {
+        id: string;
+        filename: string;
+        srcset: string;
+      };
+    }[];
+  }
