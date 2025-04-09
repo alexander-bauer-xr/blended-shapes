@@ -13,13 +13,14 @@ export class LandingPage {
       beschreibungKurz: string;
       beschreibungLang: string;
       slug: string;
-      gallerie: { id: string }[];
     }[],
-    public gallerie: {
+    public casepreview: {
       id: string;
-      path: string;
-      filename: string;
-      url: string | null;
+      beschreibung: string;
+      gallerie: {
+        id: string;
+        url: string | null;
+      }[];
     }[]
   ) {}
 
@@ -36,13 +37,14 @@ export class LandingPage {
         beschreibungKurz: service.beschreibungKurz,
         beschreibungLang: service.beschreibungLang,
         slug: service.slug,
-        gallerie: service.gallerie.map((g) => ({ id: g.id })),
       })) ?? [],
-      entry.gallerie?.map((g) => ({
-        id: g.id,
-        path: g.path,
-        filename: g.filename,
-        url: g.url ?? null,
+      entry.casepreview?.map((preview) => ({
+        id: preview.id,
+        beschreibung: preview.beschreibung ?? '',
+        gallerie: preview.gallerie?.map((g) => ({
+          id: g.id,
+          url: g.url ?? null,
+        })) ?? [],
       })) ?? []
     );
   }

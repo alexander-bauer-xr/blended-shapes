@@ -17,31 +17,30 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
             id
           }
           leadtext
-          motto2
-          story
-          services {
-            ... on services_Entry {
-              id
-              title
-              beschreibungKurz
-              beschreibungLang
-              slug
-              gallerie {
+            motto2
+            story
+            services {
+              ... on services_Entry {
                 id
+                title
+                beschreibungKurz
+                beschreibungLang
+                slug
               }
             }
-          }
-          gallerie {
-            ... on bilder_Asset {
-              id
-              path
-              filename
-              url
+            casepreview {
+              ... on media_Entry {
+                id
+                beschreibung
+                gallerie {
+                  id
+                  url
+                }
+              }
             }
           }
         }
       }
-    }
   `;
   const data = await client.request<{ entries: LandingPageEntry[] }>(query);
   return data.entries.map(LandingPage.fromRaw);

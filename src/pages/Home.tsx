@@ -78,7 +78,7 @@ const Home = () => {
           </section>
         )}
 
-        <CasesPreview gallery={landingData?.gallerie ?? []} />
+        <CasesPreview casepreview={landingData?.casepreview ?? []} />
         <Services services={landingData?.services ?? []} />
         <Story />
         <CTA />

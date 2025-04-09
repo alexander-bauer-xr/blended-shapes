@@ -5,24 +5,24 @@ export interface LandingPageEntry {
     story: string;
     hero3dmodel: {
         id: string;
-    };
+    } | null;
     services: {
         id: string;
         title: string;
         beschreibungKurz: string;
         beschreibungLang: string;
         slug: string;
+    }[];
+    casepreview?: {
+        id: string;
+        beschreibung: string;
         gallerie: {
             id: string;
+            url: string | null;
         }[];
     }[];
-    gallerie?: {
-        id: string;
-        path: string;
-        filename: string;
-        url: string | null;
-    }[];
 }
+
 export interface CaseRaw {
     id: string;
     title: string;
