@@ -9,7 +9,7 @@ const CTA = () => {
           <div className="sticky-CTA-container">
             <div className="CTA">
               <button>
-                <span className="clip-icon"></span> Jetzt anfragen.
+                <span className="clip-icon"></span> Schreib mir!
               </button>
               <div className="CTA-spacer"></div>
             </div>
