@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { StoryEntry } from '../models/StoryEntry';
 import { getStories } from '../services/cmsClient';
+import { Link } from 'react-router-dom';
 import Storyliner from '../components/StoryLiner';
 
 const Story = () => {
@@ -19,9 +20,11 @@ const Story = () => {
     <section>
       <div className="content">
         <Storyliner />
-        <a href="/story" className="button About">
-          <span className="cases-icon"></span>Lerne mich kennen
-        </a>
+        <Link to="/story">
+          <div className="button About">
+            <span className="cases-icon"></span>Lerne mich kennen
+          </div>
+        </Link>
       </div>
     </section>
   );

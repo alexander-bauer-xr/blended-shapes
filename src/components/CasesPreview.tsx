@@ -1,5 +1,7 @@
 import { FC, useEffect } from 'react';
 import initGridEffects from '../js/grid';
+import { Link } from 'react-router-dom';
+
 
 type Props = {
   casepreview: {
@@ -40,9 +42,9 @@ const CasesPreview: FC<Props> = ({ casepreview }) => {
             </div>
           ))}
         </div>
-        <a href="/cases" className="button Cases">
+        <Link to="/cases" className="button Cases">
           <span className="cases-icon"></span>Alle Cases ansehen
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,9 +26,9 @@ const Menu = () => {
       <div className="menu-wrapper flex items-center justify-between">
         <div>
           <h1>
-            <a href="/" className="hover:underline">
+            <Link to="/">
               blended shapes
-            </a>
+            </Link>
           </h1>
         </div>
         <div className="motto">[code, design, vision].forEach(apply)</div>
@@ -43,14 +44,14 @@ const Menu = () => {
       <nav className={`menu-content mt-4 ${isOpen ? "open" : ""}`}>
         <ul className="p-4 space-y-2">
           <li>
-            <a href="/cases" className="hover:underline block">
+          <Link to="/cases" className="hover:underline block">
               cases
-            </a>
+          </Link>
           </li>
           <li>
-            <a href="/story" className="hover:underline block">
+            <Link to="/story" className="hover:underline block">
               story
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
