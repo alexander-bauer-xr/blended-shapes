@@ -1,7 +1,7 @@
 # Blended Shapes – React + Vite Frontend
 
-Dieses Projekt ist ein modernes React-Frontend, das Inhalte aus einem **CraftCMS-Backend** über die **GraphQL API** bezieht.  
-Es dient als Grundlage für eine Portfolioseite, mit einem klaren Fokus auf Performance, Struktur und Design.
+This project is a modern React frontend that pulls content from a **CraftCMS backend** using the **GraphQL API**.  
+It serves as the foundation for a portfolio site with a clear focus on performance, structure, and design.
 
 ---
 
@@ -13,24 +13,24 @@ Es dient als Grundlage für eine Portfolioseite, mit einem klaren Fokus auf Perf
 - **SCSS**
 - **CraftCMS (Headless, via GraphQL)**
 - **Axios**
-- **Three.js** (experimentell für 3D-Features)
+- **Three.js** (experimental for 3D features)
 
 ---
 
-## Projekt starten
+## Getting Started
 
 ```bash
 npm install
 npm run dev
 ```
 
-Die Anwendung läuft anschließend unter: [http://localhost:5173](http://localhost:5173)
+The app will then run at: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-### API-Client-Konfiguration
+### API Client Configuration
 
-Der GraphQL-Client für den Zugriff auf CraftCMS befindet sich in:
+The GraphQL client used to access CraftCMS is located at:
 
 ```ts
 // src/api/client.ts
@@ -43,104 +43,101 @@ export const client = new GraphQLClient('https://blended-shapes.com/cms-blended-
 });
 ```
 
-> ⚠️ Ohne gültigen Token funktionieren keine Inhalte.  
-> Bei Bedarf können Testdaten über ein separates CMS bereitgestellt werden.
+> ⚠️ No content will work without a valid token.  
+> Test data can be provided through a separate CMS if needed.
 
 ---
 
-### CraftCMS Setup-Voraussetzungen
+### CraftCMS Setup Requirements
 
-Damit das Frontend korrekt funktioniert, muss das CraftCMS wie folgt konfiguriert sein:
+To function correctly, CraftCMS must be configured as follows:
 
-### Allgemeine Anforderungen
+### General Requirements
 
-- **GraphQL muss aktiviert sein**
-- Ein gültiges **Access Token (Bearer)** muss erstellt werden
-- Inhalte müssen in folgenden **Sections** und **Entry Types** angelegt werden
+- **GraphQL must be enabled**
+- A valid **Access Token (Bearer)** must be generated
+- Content must be created in the following **Sections** and **Entry Types**
 
 ---
 
 ### `landingPage` (Section: _Single_)
 
-| Feldname         | Typ                    | Beschreibung                                           |
-|------------------|-------------------------|--------------------------------------------------------|
-| `hero3dmodel`    | Asset (GLB, JPG etc)    | Haupt-3D-Modell                                        |
-| `leadtext`       | Plain Text              | Einleitungstext                                        |
-| `motto2`         | Plain Text              | Optionaler zweiter Titel                               |
-| `story`          | Plain Text              | Hauptstory-Text                                        |
-| `services`       | Entries (Relation zu `services`) | Liste verknüpfter Dienstleistungen          |
-| `casepreview`    | Relation zu `media`     | Mediale Vorschau mit Galerie und Beschreibung          |
+| Field Name       | Type                        | Description                                           |
+|------------------|-----------------------------|--------------------------------------------------------|
+| `hero3dmodel`    | Asset (GLB, JPG, etc.)      | Main 3D model                                         |
+| `leadtext`       | Plain Text                  | Introductory text                                     |
+| `motto2`         | Plain Text                  | Optional secondary title                              |
+| `story`          | Plain Text                  | Main story text                                       |
+| `services`       | Entries (relation to `services`) | List of linked services                       |
+| `casepreview`    | Relation to `media`         | Media preview with gallery and description            |
 
 ---
 
 ### `services` (Section: _Structure_)
 
-| Feldname             | Typ         | Beschreibung                  |
-|----------------------|-------------|-------------------------------|
-| `title`              | Plain Text  | Titel der Dienstleistung      |
-| `beschreibungKurz`   | Plain Text  | Kurze Beschreibung            |
-| `beschreibungLang`   | Rich Text   | Ausführliche Beschreibung     |
-| `slug`               | Slug        | URL-kompatibler Name          |
+| Field Name           | Type         | Description                  |
+|----------------------|--------------|------------------------------|
+| `title`              | Plain Text   | Title of the service         |
+| `beschreibungKurz`   | Plain Text   | Short description            |
+| `beschreibungLang`   | Rich Text    | Detailed description         |
+| `slug`               | Slug         | URL-friendly name            |
 
 ---
 
-### `cases` (Section: _Channel_ oder _Structure_)
+### `cases` (Section: _Channel_ or _Structure_)
 
-| Feldname             | Typ         | Beschreibung                      |
-|----------------------|-------------|-----------------------------------|
-| `title`              | Plain Text  | Projekttitel                      |
-| `beschreibungKurz`   | Plain Text  | Intro-Text                        |
-| `beschreibungLang`   | Rich Text   | Detailbeschreibung                |
-| `tags`               | Kategorie / Entry Reference | Thematische Tags      |
-| `casespreviews`      | Relation zu `media` | Galerie + Beschreibung + CSS-Style |
-
----
-
-###  `story` (Section: _Channel_)
-
-| Feldname             | Typ         | Beschreibung                      |
-|----------------------|-------------|-----------------------------------|
-| `title`              | Plain Text  | Titel der Geschichte              |
-| `beschreibungKurz`   | Plain Text  | Kurzer Teaser                     |
-| `beschreibungLang`   | Rich Text   | Vollständige Story                |
-| `personen`           | Relation zu `personen` | Beteiligte Personen         |
-
-#### `personen` (Eintragstyp)
-
-| Feldname       | Typ         | Beschreibung                |
-|----------------|-------------|-----------------------------|
-| `personenname` | Plain Text  | Name der Person             |
-| `bio`          | Rich Text   | Biografie                   |
-| `profilbild`   | Asset (Bild)| Bild der Person             |
+| Field Name           | Type         | Description                      |
+|----------------------|--------------|-----------------------------------|
+| `title`              | Plain Text   | Project title                     |
+| `beschreibungKurz`   | Plain Text   | Intro text                        |
+| `beschreibungLang`   | Rich Text    | Detailed description              |
+| `tags`               | Category / Entry Reference | Thematic tags        |
+| `casespreviews`      | Relation to `media` | Gallery + description + CSS style |
 
 ---
 
-## CraftCMS installieren
+### `story` (Section: _Channel_)
 
-Die vollständige Anleitung zur Installation von CraftCMS findest du in der offiziellen Dokumentation:
+| Field Name           | Type         | Description                      |
+|----------------------|--------------|-----------------------------------|
+| `title`              | Plain Text   | Story title                       |
+| `beschreibungKurz`   | Plain Text   | Short teaser                      |
+| `beschreibungLang`   | Rich Text    | Full story                        |
+| `personen`           | Relation to `personen` | Involved persons         |
 
-[CraftCMS Installationsanleitung](https://craftcms.com/docs/4.x/installation.html)
+#### `personen` (Entry Type)
+
+| Field Name     | Type          | Description                |
+|----------------|---------------|----------------------------|
+| `personenname` | Plain Text    | Name of the person         |
+| `bio`          | Rich Text     | Biography                  |
+| `profilbild`   | Asset (Image) | Picture of the person      |
 
 ---
 
-## Struktur-Überblick
+## Install CraftCMS
+
+The full CraftCMS installation guide can be found in the official documentation:
+
+[CraftCMS Installation Guide](https://craftcms.com/docs/4.x/installation.html)
+
+---
+
+## Structure Overview
 
 ```text
 react-page/
-├── .env
-├── backend/proxy.php
-├── public/                # Statische Dateien für Vite
-├── dist/                  # Build-Ausgabe
+├── public/                # Static files for Vite
 ├── src/
-│   ├── components/        # UI-Komponenten
+│   ├── components/        # UI components
 │   ├── pages/             # Home, Cases, Story
-│   ├── api/               # API-Client
-│   ├── services/          # CMS-Verbindung
-│   ├── models/            # Datenmodell-Abbildung
-│   ├── js/                # Logik & visuelle Helfer
-│   ├── styles/            # SCSS (Modular + Global)
-│   ├── assets/            # Bilder, Fonts, Videos
-│   └── types/             # Erweiterte Typdefinitionen
+│   ├── api/               # API client
+│   ├── services/          # CMS connection
+│   ├── models/            # Data models
+│   ├── js/                # Logic & visual helpers
+│   ├── styles/            # SCSS (modular + global)
+│   ├── assets/            # Images, fonts, videos
+│   └── types/             # Extended type definitions
 ├── vite.config.ts
 ├── tsconfig*.json
 └── README.md
@@ -150,21 +147,21 @@ react-page/
 
 ## ToDos
 
-- [ ] PHP-Proxy-Logik vervollständigen oder verbessern (backend/proxy.php)
-- [ ] Kontaktformular implementieren
-- [ ] Verbesserte Frontend-Animationen und sanfte Übergänge implementieren
-- [ ] Responsives Design optimieren (z. B. Bilder mit `srcset` optimiert zurückgeben) und typografische Feinabstimmung vornehmen
+- [ ] Complete or improve PHP proxy logic (backend/proxy.php)
+- [ ] Implement contact form
+- [ ] Add improved frontend animations and smooth transitions
+- [ ] Optimize responsive design (e.g., return images optimized via `srcset`) and fine-tune typography
 
-## Weiterführend
+## Further Notes
 
-- Alle Daten werden beim Initial-Load aus dem CraftCMS geladen
-- Die Abfragen sind in `src/services/cmsClient.ts` definiert
-- Die zugehörigen Modelle in `src/models/` und `src/types/`
-- Das Styling basiert auf SCSS und ist in Module gegliedert
+- All data is loaded on initial load from CraftCMS
+- Queries are defined in `src/services/cmsClient.ts`
+- Corresponding models are in `src/models/` and `src/types/`
+- Styling is based on SCSS and organized into modules
 
 ---
 
-## Lizenz
+## License
 
-Interne Entwicklungsbasis von **Blended Shapes**  
-Nicht zur öffentlichen Nutzung bestimmt.
+Internal development base of **Blended Shapes**  
+Not intended for public use.
