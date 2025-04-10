@@ -42,6 +42,31 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  transition: transform var(--transition-default) ease, background-image var(--transition-default) ease;
+}
+
+.menu-icon.rotating {
+  transform: rotate(180deg);
+  background-image: var(--close-icon);
+}
+
+.menu-icon.rotatingback {
+  transform: rotate(0deg);
+  background-image: var(--menu-icon);
+}
+
+.menu-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--transition-default) ease;
+}
+
+.menu-content.open {
+  max-height: 300px;
+}
+
+.bg-open {
+  background-color: rgba(255, 255, 255, 0.95)!important;
 }
 
 .menu-wrapper {
