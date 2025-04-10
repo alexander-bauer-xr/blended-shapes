@@ -16,7 +16,7 @@ const People = () => {
     const people = stories.flatMap(story => story.people);
 
     return (
-        <div className="people-grid">
+        <div className="people-grid content">
             {people.map(person => (
                 <div key={person.id} className="person-card">
                     {person.profilbild?.url && (
@@ -26,11 +26,13 @@ const People = () => {
                             className="person-image"
                         />
                     )}
-                    <h3>{person.personenname}</h3>
-                    <div
-                        className="person-bio"
-                        dangerouslySetInnerHTML={{ __html: person.bio }}
-                    />
+                    <div className="person-desc">
+                        <h3>{person.personenname}</h3>
+                        <div
+                            className="person-bio"
+                            dangerouslySetInnerHTML={{ __html: person.bio }}
+                        />
+                    </div>
                 </div>
             ))}
         </div>
