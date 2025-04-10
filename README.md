@@ -45,7 +45,6 @@ export const client = new GraphQLClient('https://blended-shapes.com/cms-blended-
 
 > ⚠️ Ohne gültigen Token funktionieren keine Inhalte.  
 > Bei Bedarf können Testdaten über ein separates CMS bereitgestellt werden.
-> Für die Entwicklung ist es 
 
 ---
 
@@ -153,8 +152,8 @@ react-page/
 
 - [ ] PHP-Proxy-Logik vervollständigen oder verbessern (backend/proxy.php)
 - [ ] Kontaktformular implementieren
-- [ ] Bessere Frontend-Animationen und sanfte Übergänge
-- [ ] Optimierung des responsiven Designs und typografischen Feinschliffs
+- [ ] Verbesserte Frontend-Animationen und sanfte Übergänge implementieren
+- [ ] Responsives Design optimieren (z. B. Bilder mit `srcset` optimiert zurückgeben) und typografische Feinabstimmung vornehmen
 
 ## Weiterführend
 
