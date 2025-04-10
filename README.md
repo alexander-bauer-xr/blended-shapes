@@ -64,7 +64,7 @@ To function correctly, CraftCMS must be configured as follows:
 
 | Field Name       | Type                        | Description                                           |
 |------------------|-----------------------------|--------------------------------------------------------|
-| `hero3dmodel`    | Asset (GLB, JPG, etc.)      | Main 3D model                                         |
+| `hero3dmodel`    | Asset (GLB, FBX, etc.)      | Main 3D model                                         |
 | `leadtext`       | Plain Text                  | Introductory text                                     |
 | `motto2`         | Plain Text                  | Optional secondary title                              |
 | `story`          | Plain Text                  | Main story text                                       |
