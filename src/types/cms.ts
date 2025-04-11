@@ -29,6 +29,7 @@ export interface CaseRaw {
     title: string;
     beschreibungKurz: string;
     beschreibungLang: string;
+    slug: string;
     tags: {
         title: string;
     }[];

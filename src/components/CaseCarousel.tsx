@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import { getCases } from '../services/cmsClient';
 import { CaseEntry } from '../models/CaseEntry';
@@ -7,24 +8,39 @@ const CaseCarousel = () => {
   const [cases, setCases] = useState<CaseEntry[]>([]);
   const [index, setIndex] = useState(0);
   const [collapsed, setCollapsed] = useState(false);
+  const { slug } = useParams();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     getCases().then((data) => {
-      if (data.length > 0) {
-        const random = Math.floor(Math.random() * data.length);
-        setCases(data);
-        setIndex(random);
+      setCases(data);
+  
+      if (data.length === 0) return;
+  
+      if (slug) {
+        const foundIndex = data.findIndex((c) => c.slug === slug);
+        setIndex(foundIndex >= 0 ? foundIndex : 0);
+      } else {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        setIndex(randomIndex);
+        navigate(`/cases/${data[randomIndex].slug}`, { replace: true });
       }
     });
-  }, []);
+  }, [slug]);  
 
   const next = () => {
     setCollapsed(true);
     setTimeout(() => {
-      setIndex((prev) => (prev + 1) % cases.length);
+      const newIndex = (index + 1) % cases.length;
+      setIndex(newIndex);
+  
+      navigate(`/cases/${cases[newIndex].slug}`, { replace: false });
+  
       setCollapsed(false);
     }, 400);
   };
+  
 
   const handlers = useSwipeable({
     onSwipedLeft: next,

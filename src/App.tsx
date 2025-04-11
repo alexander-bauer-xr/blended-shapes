@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Cases from './pages/Cases';
 import Story from './pages/Story';
 import Contact from './pages/Contact';
+import CaseCarousel from './components/CaseCarousel';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/cases" element={<Cases />} />
         <Route path="/story" element={<Story />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/cases/:slug" element={<CaseCarousel />} />
       </Routes>
     </Layout>
   );

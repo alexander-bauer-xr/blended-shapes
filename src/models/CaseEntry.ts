@@ -7,6 +7,7 @@ export class CaseEntry {
     public title: string,
     public beschreibungKurz: string,
     public beschreibungLang: string,
+    public slug: string,
     public tags: string[],
     public casespreviews: {
       id: string;
@@ -25,6 +26,7 @@ export class CaseEntry {
       raw.title,
       raw.beschreibungKurz,
       raw.beschreibungLang,
+      raw.slug,
       raw.tags?.map((tag) => tag.title) ?? [],
       raw.casespreviews.map((preview) => ({
         id: preview.id,

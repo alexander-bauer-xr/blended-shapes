@@ -55,6 +55,7 @@ export const getCases = async (): Promise<CaseEntry[]> => {
           title
           beschreibungKurz
           beschreibungLang
+          slug
           tags {
             title
           }
