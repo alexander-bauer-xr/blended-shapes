@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Cases from './pages/Cases';
 import Story from './pages/Story';
 import Contact from './pages/Contact';
+import Services from './pages/Services';
 import CaseCarousel from './components/CaseCarousel';
 import './styles/global.scss';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/cases" element={<Cases />} />
         <Route path="/story" element={<Story />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/services" element={<Services />} /> 
         <Route path="/cases/:slug" element={<CaseCarousel />} />
       </Routes>
     </Layout>

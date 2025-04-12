@@ -5,7 +5,8 @@ import { client } from '../api/client';
 import { LandingPage } from '../models/LandingPage';
 import { CaseEntry } from '../models/CaseEntry';
 import { StoryEntry } from '../models/StoryEntry';
-import { CaseRaw, StoryRaw, LandingPageRaw } from '../types/cms';
+import { ServicesPageEntry } from '../models/ServicesPageEntry';
+import { ServicesPageRaw, ServiceRaw, CaseRaw, StoryRaw, LandingPageRaw } from '../types/cms';
 
 export const getLandingPage = async (): Promise<LandingPage[]> => {
   const query = gql`
@@ -110,4 +111,40 @@ export const getStories = async (): Promise<StoryEntry[]> => {
   `;
   const data = await client.request<{ storyEntries: StoryRaw[] }>(query);
   return data.storyEntries.map(StoryEntry.fromRaw);
+};
+
+export const getServicesPage = async (): Promise<ServicesPageEntry> => {
+  const query = gql`
+    query ServicesPage {
+      servicesEntries {
+        ... on services_Entry {
+          id
+          title
+          slug
+          assignedtags {
+            id
+            title
+          }
+        }
+      }
+      projekteEntries {
+        ... on cases_Entry {
+          id
+          title
+          slug
+          tags {
+            id
+            title
+          }
+          gallerie {
+            id
+            url
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await client.request<ServicesPageRaw>(query);
+  return ServicesPageEntry.fromRaw(data);
 };

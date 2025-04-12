@@ -134,6 +134,14 @@ section {
   border: 0.15rem solid var(--color-text);
 }
 
+.sub button:hover {
+  background: var(--color-highlight);
+}
+
+.active {
+  background: var(--color-highlight)!important;
+}
+
 .sub .tags {
   display: flex;
   gap: var(--spacing-xs);
@@ -148,6 +156,41 @@ section {
   max-width: 1920px;
   width: 100%;
   align-items: center;
+}
+
+.services-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-center h1 {
+  width:100%;
+  max-width: 1420px;
+}
+
+.services {
+  display: flex;
+  gap: var(--spacing-m);
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.service-block {
+  flex: 1;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column !important;
+}
+
+.tag-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
 }
 
 .lead-wrapper,
@@ -187,4 +230,11 @@ section {
   background: linear-gradient(180deg,
       rgb(190, 190, 190) 0%,
       rgba(255, 255, 255, 1) 80%);
+}
+
+.services {
+  display: flex;
+  gap: var(--spacing-m);
+  flex-direction: row;
+  flex-wrap: wrap;
 }

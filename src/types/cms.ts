@@ -62,4 +62,33 @@ export interface StoryRaw {
             url: string;
         }[];
     }[];
+}
+
+export interface ServiceRaw {
+    id: string;
+    title: string;
+    slug: string;
+    assignedtags: {
+        id: string;
+        title: string;
+    }[];
+}
+
+export interface ProjectRaw {
+    id: string;
+    title: string;
+    slug: string;
+    tags: {
+        id: string;
+        title: string;
+    }[];
+    gallerie: {
+        id: string;
+        url: string;
+    }[];
+}
+
+export interface ServicesPageRaw {
+    servicesEntries: ServiceRaw[];
+    projekteEntries: ProjectRaw[];
 }  

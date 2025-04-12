@@ -87,15 +87,15 @@ a {
   transition: transform var(--transition-default);
 }
 
-.content a:hover span {
+.index .content a:hover span {
   transform: rotate(360deg);
 }
 
-.content .design span {
+.index .content .design span {
   transform: rotate(90deg);
 }
 
-.content .THREEDexperiences span {
+.index .content .THREEDexperiences span {
   transform: rotate(180deg);
 }
 
