@@ -13,34 +13,38 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
       entries(section: "landingPage") {
         ... on landingpagecontent_Entry {
           id
+          title
           hero3dmodel {
             id
           }
           leadtext
-            motto2
-            story
-            services {
-              ... on services_Entry {
-                id
-                title
-                beschreibungKurz
-                beschreibungLang
-                slug
-              }
-            }
-            casepreview {
-              ... on media_Entry {
-                id
-                beschreibung
-                gallerie {
-                  id
-                  url
-                }
-              }
+          motto2
+          story
+          featuredcases {
+            id
+            title
+            slug
+            ... on cases_Entry {
+              id
+              title
+              gallerie {id
+              title
+              url}
             }
           }
+          services {
+            ... on services_Entry {
+              id
+              title
+              beschreibungKurz
+              beschreibungLang
+              slug
+            }
+          }
+          motto2
         }
       }
+    }
   `;
   const data = await client.request<{ entries: LandingPageRaw[] }>(query);
   return data.entries.map(LandingPage.fromRaw);

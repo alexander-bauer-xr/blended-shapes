@@ -1,6 +1,7 @@
 // types/cms.ts
 export interface LandingPageRaw {
     id: string;
+    title: string;
     leadtext: string;
     motto2: string;
     story: string;
@@ -14,11 +15,13 @@ export interface LandingPageRaw {
         beschreibungLang: string;
         slug: string;
     }[];
-    casepreview?: {
+    featuredcases?: {
         id: string;
-        beschreibung: string;
+        title: string;
+        slug: string;
         gallerie: {
             id: string;
+            title: string;
             url: string | null;
         }[];
     }[];

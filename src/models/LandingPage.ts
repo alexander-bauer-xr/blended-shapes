@@ -3,6 +3,7 @@ import { LandingPageRaw } from '../types/cms';
 export class LandingPage {
   constructor(
     public id: string,
+    public title: string,
     public leadtext: string,
     public motto2: string,
     public story: string,
@@ -14,11 +15,13 @@ export class LandingPage {
       beschreibungLang: string;
       slug: string;
     }[],
-    public casepreview: {
+    public featuredcases: {
       id: string;
-      beschreibung: string;
+      title: string;
+      slug: string;
       gallerie: {
         id: string;
+        title: string;
         url: string | null;
       }[];
     }[]
@@ -27,6 +30,7 @@ export class LandingPage {
   static fromRaw(raw: LandingPageRaw): LandingPage {
     return new LandingPage(
       raw.id,
+      raw.title,
       raw.leadtext,
       raw.motto2,
       raw.story,
@@ -38,11 +42,13 @@ export class LandingPage {
         beschreibungLang: service.beschreibungLang,
         slug: service.slug,
       })) ?? [],
-      raw.casepreview?.map((preview) => ({
-        id: preview.id,
-        beschreibung: preview.beschreibung ?? '',
-        gallerie: preview.gallerie?.map((g) => ({
+      raw.featuredcases?.map((entry) => ({
+        id: entry.id,
+        title: entry.title,
+        slug: entry.slug,
+        gallerie: entry.gallerie?.map((g) => ({
           id: g.id,
+          title: g.title,
           url: g.url ?? null,
         })) ?? [],
       })) ?? []
