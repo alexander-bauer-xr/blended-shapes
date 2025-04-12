@@ -55,6 +55,10 @@
   background-image: var(--menu-icon);
 }
 
+.menu .brand {
+  text-decoration: none;
+}
+
 .menu-content {
   overflow: hidden;
   max-height: 0;
@@ -253,7 +257,6 @@
 }
 
 .contact input, .contact textarea {
-  vertical-align: middle;
   background-color: #fff;
   width: 100%;
   height: 38px;
