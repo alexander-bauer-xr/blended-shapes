@@ -21,8 +21,9 @@ const Story = () => {
       <div className="content">
         <Storyliner />
         <Link to="/story">
+        <span className="cases-icon"></span>
           <div className="button About">
-            <span className="cases-icon"></span>Lerne mich kennen
+            Lerne mich kennen
           </div>
         </Link>
       </div>

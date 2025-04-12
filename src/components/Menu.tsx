@@ -57,11 +57,9 @@ const Menu = () => {
     >
       <div className="menu-wrapper flex items-center justify-between">
         <div>
-          <h1>
-            <Link to="/">
+            <Link className="brand" to="/">
               blended shapes
             </Link>
-          </h1>
         </div>
         <div className="motto">[code, design, vision].forEach(apply)</div>
         <button
@@ -73,9 +71,9 @@ const Menu = () => {
         </button>
       </div>
 
-      <nav className={`menu-content mt-4 ${isOpen ? "open" : ""}`}>
-        <ul className="p-4 space-y-2">
-          <li>
+      <nav className={`menu-content ${isOpen ? "open" : ""}`}>
+        <ul className="">
+          <li className="brand">
             <Link to="/cases" className="hover:underline block">
               cases
             </Link>

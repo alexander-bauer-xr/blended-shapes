@@ -27,7 +27,7 @@ const Story = () => {
             <main className="container-xl sub">
                 <section className="cases-section">
                     <div className="content">
-                        <h2>Story</h2>
+                        <h1>Story</h1>
                         <div className="lead-wrapper">
                             <StoryLongLiner />
                         </div>

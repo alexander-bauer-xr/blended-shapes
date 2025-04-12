@@ -56,8 +56,8 @@ const CaseCarousel = () => {
       <section className="cases-section">
         <div className={`content transition-box ${collapsed ? 'collapsed' : 'expanded'}`}>
           <div className="lead-wrapper">
-            <h2>Cases</h2>
-            <h3>{current.title}</h3>
+            <h1>Cases</h1>
+            <h2>{current.title}</h2>
             <div
               className="case-description"
               dangerouslySetInnerHTML={{ __html: current.beschreibungKurz }}
