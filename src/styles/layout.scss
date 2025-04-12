@@ -123,16 +123,12 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
-  font-family: 'Aspekta', Arial, sans-serif !important;
+  font-family: "Aspekta", Arial, sans-serif !important;
   font-size: var(--font-size-button);
   color: var(--color-text);
   text-decoration: none;
   padding: var(--spacing-xxxs) var(--spacing-m);
-  gap: 0.2rem;
   text-wrap: nowrap;
-  border: none;
-  font-weight: 400;
   cursor: pointer;
   transition: background var(--transition-default);
   border: 0.15rem solid var(--color-text);
@@ -163,6 +159,10 @@ section {
 .experiences-scrolly {
   max-width: 1420px;
   width: 100%;
+}
+
+.lead-title {
+  display: inline;
 }
 
 #canvas-container {

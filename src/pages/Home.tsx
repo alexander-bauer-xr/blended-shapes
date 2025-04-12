@@ -12,7 +12,6 @@ import CTA from '../components/CTA';
 import initVisualScrollEffects from '../js/visual';
 import initThreeScene, { destroyThreeScene } from '../js/main';
 import initGridEffects from '../js/grid';
-import './Home.scss';
 
 const cleanHTML = (html: string): string => {
   const trimmedHTML = html.trim();
@@ -72,13 +71,14 @@ const Home = () => {
           <section className="lead-section">
             <div className="content">
               <div className="lead-wrapper">
+                <h1 className="lead-title"> {landingData?.title} </h1>
                 <p className="lead" dangerouslySetInnerHTML={{ __html: cleanedLeadtext }} />
               </div>
             </div>
           </section>
         )}
 
-        <CasesPreview casepreview={landingData?.casepreview ?? []} />
+        <CasesPreview featuredcases={landingData?.featuredcases ?? []} />
         <Services services={landingData?.services ?? []} />
         <Story />
       </main>

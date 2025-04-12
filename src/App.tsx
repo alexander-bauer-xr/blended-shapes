@@ -6,6 +6,8 @@ import Cases from './pages/Cases';
 import Story from './pages/Story';
 import Contact from './pages/Contact';
 import CaseCarousel from './components/CaseCarousel';
+import './styles/global.scss';
+
 
 function App() {
   return (
