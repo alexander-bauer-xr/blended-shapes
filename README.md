@@ -1,7 +1,7 @@
 # Blended Shapes – React + Vite Frontend
 
 This project is a modern React frontend that pulls content from a **CraftCMS backend** using the **GraphQL API**.  
-It serves as the foundation for a portfolio site with a clear focus on performance, structure, and design. This branch shows a significantly improved version of the project by solving the Moonshiner Fachaufgabe.
+It serves as the foundation for a portfolio site with a clear focus on performance, structure, and design. This branch shows a significantly improved version of the project by solving the **Moonshiner Fachaufgabe**.
 
 ---
 
