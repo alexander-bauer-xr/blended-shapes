@@ -47,7 +47,9 @@ const Services = () => {
     if (activeTagIds.length === 0) return data.projects;
 
     return data.projects.filter((project) =>
-      project.tags.some((tag) => activeTagIds.includes(tag.id))
+      activeTagIds.every((activeId) =>
+        project.tags.some((tag) => tag.id === activeId)
+      )
     );
   }, [activeTagIds, data]);
 
