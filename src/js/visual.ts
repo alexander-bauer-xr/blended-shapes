@@ -1,7 +1,6 @@
 // src/js/visual.ts
 
 export default function initVisualScrollEffects(): void {
-  // === GLOBAL ELEMENT REFERENCES ===
   const heroContainer = document.querySelector('.hero-container') as HTMLElement;
   const canvasContainer = document.getElementById('canvas-container') as HTMLElement;
   const heroTransformLeft = document.querySelector('.transform-frame-left') as HTMLElement;
@@ -12,7 +11,6 @@ export default function initVisualScrollEffects(): void {
   const CTAspacer = document.querySelector('.CTA-spacer') as HTMLElement;
   const CTAhead = document.querySelector('.CTA-head') as HTMLElement;
 
-  // === DEBOUNCE HELPER ===
   function debounce(fn: (...args: any[]) => void, delay = 200) {
     let timeout: number;
     return function (...args: any[]) {
@@ -24,10 +22,8 @@ export default function initVisualScrollEffects(): void {
   let ctaFrozen = false;
   let scrollRAF: number | null = null;
 
-  // === SCROLL ANIMATION ===
   function handleScrollFrame() {
     const scrollY = window.scrollY;
-
     const scale = Math.max(1 - scrollY * 0.004, 0.7);
     const translateY = Math.min(scrollY * 0.7, 250);
     const opacity = Math.max(1 - scrollY * 0.004, 0);
@@ -75,11 +71,20 @@ export default function initVisualScrollEffects(): void {
     if (scrollY < pinnedOffset) {
       experiences.forEach((exp: HTMLElement) => {
         exp.style.height = `${exp.dataset.fullheight}px`;
-        exp.querySelectorAll('p').forEach(p => (p as HTMLElement).style.maxHeight = `${(p as HTMLElement).dataset.height}px`);
+        exp.querySelectorAll('p').forEach(p => {
+          const pEl = p as HTMLElement;
+          const target = pEl.dataset.height + 'px';
+          if (pEl.style.maxHeight !== target) pEl.style.maxHeight = target;
+        });
       });
     } else {
       const localScroll = scrollY - pinnedOffset;
+      const visibleStart = Math.floor(localScroll / segmentRange) - 1;
+      const visibleEnd = visibleStart + 3;
+
       experiences.forEach((exp: HTMLElement, index: number) => {
+        if (index < visibleStart || index > visibleEnd) return;
+
         const fullH = parseFloat(exp.dataset.fullheight!);
         const minH = parseFloat(exp.dataset.minheight!);
         const start = index * segmentRange;
@@ -89,17 +94,25 @@ export default function initVisualScrollEffects(): void {
 
         if (localScroll < start) {
           exp.style.height = `${fullH}px`;
-          paragraphs.forEach(p => (p as HTMLElement).style.maxHeight = `${(p as HTMLElement).dataset.height}px`);
+          paragraphs.forEach(p => {
+            const pEl = p as HTMLElement;
+            const target = pEl.dataset.height + 'px';
+            if (pEl.style.maxHeight !== target) pEl.style.maxHeight = target;
+          });
         } else if (localScroll > end) {
           exp.style.height = `${minH}px`;
-          paragraphs.forEach(p => (p as HTMLElement).style.maxHeight = '0px');
+          paragraphs.forEach(p => {
+            const pEl = p as HTMLElement;
+            if (pEl.style.maxHeight !== '0px') pEl.style.maxHeight = '0px';
+          });
         } else {
           const progress = (localScroll - start) / (end - start);
           const currentHeight = fullH - (fullH - minH) * progress;
           exp.style.height = `${currentHeight}px`;
           paragraphs.forEach(p => {
-            (p as HTMLElement).style.maxHeight =
-              currentHeight < Number(experienceTextHeight) ? '0px' : `${(p as HTMLElement).dataset.height}px`;
+            const pEl = p as HTMLElement;
+            const target = currentHeight < Number(experienceTextHeight) ? '0px' : `${pEl.dataset.height}px`;
+            if (pEl.style.maxHeight !== target) pEl.style.maxHeight = target;
           });
         }
       });
@@ -115,9 +128,7 @@ export default function initVisualScrollEffects(): void {
   }
 
   function handleSmartScroll() {
-    if (!scrollRAF) {
-      scrollRAF = requestAnimationFrame(handleScrollFrame);
-    }
+    if (!scrollRAF) scrollRAF = requestAnimationFrame(handleScrollFrame);
   }
 
   function setupExperiences() {
@@ -126,19 +137,11 @@ export default function initVisualScrollEffects(): void {
     const stickyContainer = document.querySelector('.sticky-container') as HTMLElement;
     const remGap = calculateRemGap();
     const totalHeight = prepareExperienceHeights(experiences, remGap);
-    setScrollyHeight(scrolly, totalHeight, stickyContainer);
+    setScrollyHeight(scrolly, totalHeight);
     positionStickyContainer(stickyContainer, menu, remGap);
     const segmentRange = totalHeight / experiences.length;
     const pinnedOffset = getPinnedOffset(scrolly);
-    (window as any)._experienceState = {
-      experiences,
-      remGap,
-      stickyContainer,
-      scrolly,
-      segmentRange,
-      pinnedOffset,
-      totalHeight,
-    };
+    (window as any)._experienceState = { experiences, remGap, stickyContainer, scrolly, segmentRange, pinnedOffset, totalHeight };
     handleScrollFrame();
   }
 
@@ -190,9 +193,9 @@ export default function initVisualScrollEffects(): void {
       const el = exp as HTMLElement;
       const fullHeight = measureExperienceFullHeight(el);
       el.style.height = 'auto';
-      const h3Height = el.querySelector('h3')?.offsetHeight || 0;
-      const aHeight = el.querySelector('a')?.offsetHeight || 0;
-      const minHeight = h3Height + aHeight + remGap;
+      const h3Height = (el.querySelector('h3') as HTMLElement)?.offsetHeight || 0;
+      const tagsHeight = (el.querySelector('.tags') as HTMLElement)?.offsetHeight || 0;
+      const minHeight = h3Height + tagsHeight + remGap;
       el.style.height = `${fullHeight}px`;
       const experienceText = el.querySelector('.experience-text') as HTMLElement;
       const expTextHeight = experienceText?.offsetHeight || 0;
@@ -205,30 +208,14 @@ export default function initVisualScrollEffects(): void {
   }
 
   function updateExperienceHeights(experiences: NodeListOf<Element>, remGap: number, stickyContainer: HTMLElement, scrolly: HTMLElement): number {
-    let totalHeight = 0;
-    experiences.forEach(exp => {
-      const el = exp as HTMLElement;
-      const fullHeight = measureExperienceFullHeight(el);
-      el.style.height = 'auto';
-      const h3Height = el.querySelector('h3')?.offsetHeight || 0;
-      const aHeight = el.querySelector('a')?.offsetHeight || 0;
-      const minHeight = h3Height + aHeight + remGap;
-      el.style.height = `${fullHeight}px`;
-      const experienceText = el.querySelector('.experience-text') as HTMLElement;
-      const expTextHeight = experienceText?.offsetHeight || 0;
-      el.querySelectorAll('p').forEach(p => ((p as HTMLElement).dataset.height = measureParagraphHeight(p as HTMLElement).toString()));
-      Object.assign(el.dataset, { fullheight: fullHeight, minheight: minHeight, segmentRange: fullHeight - minHeight });
-      if (experienceText) experienceText.dataset.height = expTextHeight.toString();
-      totalHeight += fullHeight;
-    });
-    setScrollyHeight(scrolly, totalHeight, stickyContainer);
+    const totalHeight = prepareExperienceHeights(experiences, remGap);
+    setScrollyHeight(scrolly, totalHeight);
     positionStickyContainer(stickyContainer, menu, remGap);
     return totalHeight;
   }
 
-  function setScrollyHeight(scrolly: HTMLElement, totalHeight: number, stickyContainer: HTMLElement): void {
-    const stickyHeight = stickyContainer.offsetHeight;
-    scrolly.style.height = `${totalHeight + stickyHeight}px`;
+  function setScrollyHeight(scrolly: HTMLElement, totalHeight: number): void {
+    scrolly.style.height = `${Math.max(totalHeight, window.innerHeight)}px`;
   }
 
   function positionStickyContainer(stickyContainer: HTMLElement, menu: HTMLElement, remGap: number): void {
@@ -260,10 +247,9 @@ export default function initVisualScrollEffects(): void {
   window.addEventListener('scroll', handleSmartScroll);
   window.addEventListener('resize', debounce(() => {
     const { experiences, remGap, stickyContainer, scrolly } = (window as any)._experienceState;
-    resetToUnscrolledState();
-    const totalHeight = updateExperienceHeights(experiences, remGap, stickyContainer, scrolly);
     requestAnimationFrame(() => {
-      setScrollyHeight(scrolly, totalHeight, stickyContainer);
+      resetToUnscrolledState();
+      const totalHeight = updateExperienceHeights(experiences, remGap, stickyContainer, scrolly);
       const pinnedOffset = getPinnedOffset(scrolly);
       const segmentRange = totalHeight / experiences.length;
       Object.assign((window as any)._experienceState, { totalHeight, pinnedOffset, segmentRange });
@@ -271,4 +257,4 @@ export default function initVisualScrollEffects(): void {
     });
     heightCTA();
   }, 200));
-}  
+}
