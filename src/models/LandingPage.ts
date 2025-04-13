@@ -1,3 +1,4 @@
+// models/LandingPage.ts
 import { LandingPageRaw } from '../types/cms';
 
 export class LandingPage {
@@ -14,7 +15,8 @@ export class LandingPage {
       beschreibungKurz: string;
       beschreibungLang: string;
       slug: string;
-    }[],
+      tags?: { title: string }[];
+    }[],    
     public featuredcases: {
       id: string;
       title: string;
@@ -41,6 +43,9 @@ export class LandingPage {
         beschreibungKurz: service.beschreibungKurz,
         beschreibungLang: service.beschreibungLang,
         slug: service.slug,
+        tags: service.assignedtags?.map((tag) => ({
+          title: tag.title,
+        })) ?? [],
       })) ?? [],
       raw.featuredcases?.map((entry) => ({
         id: entry.id,

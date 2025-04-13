@@ -41,6 +41,9 @@ const CaseCarousel = () => {
     }, 400);
   };
   
+  const handleTagClick = (tag: string) => {
+    navigate(`/services?tags=${encodeURIComponent(tag)}`);
+  };
 
   const handlers = useSwipeable({
     onSwipedLeft: next,
@@ -65,7 +68,7 @@ const CaseCarousel = () => {
             {current.tags.length > 0 && (
               <div className="tags">
                 {current.tags.map((tag, i) => (
-                  <button key={i}>{tag}</button>
+                  <button key={i} onClick={() => handleTagClick(tag)}>{tag}</button>
                 ))}
               </div>
             )}

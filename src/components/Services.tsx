@@ -1,4 +1,5 @@
 // src/components/Services.tsx
+import { useNavigate } from 'react-router-dom';
 import { LandingPage } from '../models/LandingPage';
 
 interface ServicesProps {
@@ -14,21 +15,45 @@ const removeOuterParagraph = (html: string): string => {
 };
 
 const Services = ({ services }: ServicesProps) => {
-  if (!services || services.length === 0) {
-    return null;
-  }
+  const navigate = useNavigate();
+
+  if (!services || services.length === 0) return null;
+
+  const handleTagClick = (tag: string) => {
+    navigate(`/services?tags=${encodeURIComponent(tag)}`);
+  };
 
   return (
     <section className="services-section">
       <div className="content">
         <div className="experiences-scrolly" id="experiencesScrolly">
           <div className="sticky-container experiences" id="stickyExperiences">
-          <h2>Services</h2>
+            <h2>Services</h2>
             {services.map((service) => (
-              <div key={service.id} className="experience" data-fullheight="300" data-minheight="100">
+              <div
+                key={service.id}
+                className="experience"
+                data-fullheight="300"
+                data-minheight="100"
+              >
                 <div className="experience-text">
                   <h3>{service.title}</h3>
-                  <p dangerouslySetInnerHTML={{ __html: removeOuterParagraph(service.beschreibungLang) }} />
+                  <div className='tags'>
+                  {service.tags?.map((tag, index) => (
+                    <button
+                      key={index}
+                      className="tag-button"
+                      onClick={() => handleTagClick(tag.title)}
+                    >
+                      {tag.title}
+                    </button>
+                  ))}
+                  </div>
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: removeOuterParagraph(service.beschreibungLang),
+                    }}
+                  />
                 </div>
               </div>
             ))}

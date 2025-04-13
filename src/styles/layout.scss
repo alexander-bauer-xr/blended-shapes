@@ -113,8 +113,7 @@ section {
   }
 }
 
-
-.sub button {
+.sub button, .services-section button {
   position: relative;
   width: fit-content;
   background: var(--color-background);
@@ -134,7 +133,7 @@ section {
   border: 0.15rem solid var(--color-text);
 }
 
-.sub button:hover {
+.sub button:hover, .services-section button:hover {
   background: var(--color-highlight);
 }
 
@@ -142,7 +141,7 @@ section {
   background: var(--color-highlight)!important;
 }
 
-.sub .tags {
+.sub .tags, .services-section .tags {
   display: flex;
   gap: var(--spacing-xs);
   flex-wrap: wrap;

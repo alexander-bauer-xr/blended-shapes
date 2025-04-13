@@ -14,6 +14,9 @@ export interface LandingPageRaw {
         beschreibungKurz: string;
         beschreibungLang: string;
         slug: string;
+        assignedtags: {
+            title: string;
+        }[];
     }[];
     featuredcases?: {
         id: string;

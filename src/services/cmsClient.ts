@@ -6,7 +6,7 @@ import { LandingPage } from '../models/LandingPage';
 import { CaseEntry } from '../models/CaseEntry';
 import { StoryEntry } from '../models/StoryEntry';
 import { ServicesPageEntry } from '../models/ServicesPageEntry';
-import { ServicesPageRaw, ServiceRaw, CaseRaw, StoryRaw, LandingPageRaw } from '../types/cms';
+import { ServicesPageRaw, CaseRaw, StoryRaw, LandingPageRaw } from '../types/cms';
 
 export const getLandingPage = async (): Promise<LandingPage[]> => {
   const query = gql`
@@ -30,7 +30,8 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
               title
               gallerie {id
               title
-              url}
+              url
+              }
             }
           }
           services {
@@ -40,6 +41,10 @@ export const getLandingPage = async (): Promise<LandingPage[]> => {
               beschreibungKurz
               beschreibungLang
               slug
+              assignedtags {
+                id
+                title
+              }
             }
           }
           motto2
