@@ -40,7 +40,9 @@ const CasesPreview: FC<Props> = ({ featuredcases }) => {
               ) : (
                 <div className="img-placeholder">No Image</div>
               )}
-              <span>{item.title}</span>
+              {item.title?.trim() ? (
+                <span>{item.title}</span>
+              ) : null}
             </div>
           ))}
         </div>
