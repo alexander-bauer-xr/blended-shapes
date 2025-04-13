@@ -66,7 +66,7 @@ const Services = () => {
         />
       </Helmet>
 
-      <main className="container-xl sub">
+      <main className="container-xl sub services-center">
         <section className="cases-section content">
           <div className="services-center">
             <h1>Services</h1>
