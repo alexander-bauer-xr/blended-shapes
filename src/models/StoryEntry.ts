@@ -28,7 +28,7 @@ export class StoryEntry {
         id: p.id,
         personenname: p.personenname,
         bio: p.bio,
-        profilbild: p.profilbild?.[0] // <-- nur das erste Bild extrahieren
+        profilbild: p.profilbild?.[0]
       }))
     );
   }  
